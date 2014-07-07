@@ -1,0 +1,85 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org" ng-app="btapp">
+<head>
+    <meta charset="utf-8">
+    <title ng-bind="title"></title>
+    <meta name="description" content="{{description}}">
+    <meta name="viewport" content="width=device-width">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+    <script type='text/javascript' id='lt_ws' src='http://localhost:35799/socket.io/lighttable/ws.js'></script>
+
+    <script type="text/ng-template" id="nodes_root_renderer.html">
+       <li ng-repeat="node in node.nodes" class="rootNode">
+       <a ui-sref="pageview({pageName: node.name})">{{node.title}}</a>
+        <ng-include src="'nodes_renderer.html'"></ng-include>
+
+       </li>
+    </script>
+    <script type="text/ng-template" id="nodes_renderer.html">
+        <ul>
+            <li ng-repeat="node in node.nodes" class="childNode">
+            <a ui-sref="pageview({pageName: node.name})">{{node.title}}</a>
+            <ng-include src="'nodes_renderer.html'"></ng-include>
+            </li>
+        </ul>
+    </script>
+
+    <div class="container mainContent">
+        <div class="row">
+            <nav class="col-xs-4 col-md-3">
+                <div class="logoBox">
+                    <img src="/images/drawing-logo2.png" class="img-responsive">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 companyName">BULTRADE</div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 slogan">
+                            strong roofs built by tradesmen
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="sidebar-nav">
+                    <li ng-repeat="node in pagetree.pages">
+                        <a ng-show="node.name == 'home'" ui-sref="home()" class="rootNode">{{node.title}}</a>
+                        <a ng-hide="node.name == 'home'" ui-sref="pageview({pageName: node.name})">{{node.title}}</a>
+                        <ng-include src="'nodes_root_renderer.html'"></ng-include>
+                    </li>
+                </ul>
+                <ul class="sidebar-nav downloadsEl">
+                    <li class="rootNode downloadsMenuItem"><a ui-sref="downloads">Downloads</a></li>
+                </ul>
+            </nav>
+
+            <div class="col-xs-8 col-md-9 contentBody" ui-view>
+
+            </div>
+        </div>
+    </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" id="statusbar">
+    <div class="container-fluid">
+        <div class="loading-widget"><img src="/images/ajax-loader2.gif"></div>
+    </div>
+</nav>
+
+<script src="scripts/bower_components/jquery/dist/jquery.js"></script>
+<script src="scripts/bower_components/angular/angular.js"></script>
+<script src="scripts/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="scripts/bower_components/lodash/dist/lodash.js"></script>
+<script src="scripts/bower_components/restangular/dist/restangular.js"></script>
+<script src="scripts/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="scripts/bower_components/angular-touch/angular-touch.js"></script>
+<script src="scripts/bower_components/angular-tree-control/angular-tree-control.js"></script>
+
+<script src="scripts/config.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers.js"></script>
+<script src="scripts/filters.js"></script>
+<script src="scripts/directives.js"></script>
+<script src="scripts/services.js"></script>
+
+
+</body>
+</html>

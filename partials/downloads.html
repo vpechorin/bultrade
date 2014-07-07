@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Downloads</h1>
+
+        <treecontrol class="tree-classic"
+           tree-model="treedata"
+           expanded-nodes = "expandedNodes"
+           options="treeOptions"
+           on-selection="showSelected(node)">
+            <span ng-hide="node.isFile">{{node.title}} ({{node.filesNum}})</span>
+            <span ng-show="node.isFile">
+                <a ng-href="{{makeFileUrl(node)}}" target="_blank">{{node.name}}</a>
+                <span>{{node.hfileSize}}</span>
+            </span>
+        </treecontrol>
+    </div>
+</div>

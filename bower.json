@@ -1,0 +1,22 @@
+{
+    "name": "btapp",
+    "description": "",
+    "version": "0.1.0",
+    "main": "scripts/app.js",
+    "ignore": [
+        ".jshintrc",
+        "**/*.txt"
+    ],
+    "dependencies": {
+      "bootstrap": "latest",
+      "angular": "latest",
+      "angular-ui-router": "latest",
+      "restangular": "latest",
+      "angular-bootstrap": "latest",
+      "angular-touch": "latest",
+      "angular-tree-control": "latest"
+    },
+    "devDependencies": {
+    },
+    "private": true
+}

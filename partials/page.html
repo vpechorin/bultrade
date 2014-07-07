@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-xs-12 pageBody">
+        <div ng-show="parents.length > 1">
+            <ol class="breadcrumb myBc">
+              <li ng-repeat="bcItem in parents">
+                  <a ng-hide="$last || bcItem.placeholder" ui-sref="pageview({pageName: bcItem.name})">{{bcItem.title}}</a>
+                  <span ng-show="$last || bcItem.placeholder" class="active">{{bcItem.title}}</span>
+                </li>
+            </ol>
+        </div>
+
+        <div ng-show="page.images.length > 0">
+            <carousel interval="15000">
+              <slide ng-repeat="slide in page.images" active="slide.active">
+                  <img ng-src="{{makeFileUrl(slide)}}" style="margin:auto;" class="img-responsive" height="{{getImageHeight(slide, 436)}}" >
+              </slide>
+            </carousel>
+        </div>
+
+        <div class="pageText">
+            <h1 ng-hide="page.hideTitle">{{page.title}}</h1>
+
+
+            <div dynamic="page.body"></div>
+
+            <div ng-show="page.docs.length > 0">
+                <h4>Documents attached:</h4>
+                <ul class="list-group">
+                    <a class="list-group-item" ng-repeat="doc in page.docs" ng-href="{{makeFileUrl(doc)}}" target="_blank">
+                        <span ng-if="(doc.title == '') || (doc.title==null)">{{doc.name}}</span>
+                        <span ng-if="(doc.title != '') && (doc.title != null)">{{doc.title}}</span>
+                        <span class="kt-badge">{{doc.hfileSize}}</span>
+                    </a>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

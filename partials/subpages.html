@@ -1,0 +1,10 @@
+<div class="row">
+    <div ng-repeat="subp in subpages" class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <a ui-sref="pageview({pageName: subp.name})">
+            <img ng-src="{{makeFileUrl(subp.mainImage.thumb)}}">
+            <span class="caption">{{subp.title}}</span>
+            </a>
+        </div>
+    </div>
+</div>

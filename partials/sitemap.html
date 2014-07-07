@@ -1,0 +1,28 @@
+<script type="text/ng-template" id="sitemap_root_nodes_renderer.html">
+<li ng-repeat="node in node.nodes">
+<a ui-sref="pageview({pageName: node.name})">{{node.title}}</a>
+    <ng-include src="'sitemap_nodes_renderer.html'"></ng-include>
+</li>
+</script>
+<script type="text/ng-template" id="sitemap_nodes_renderer.html">
+<ul>
+    <li ng-repeat="node in node.nodes">
+        <a ui-sref="pageview({pageName: node.name})">{{node.title}}</a>
+        <ng-include src="'sitemap_nodes_renderer.html'"></ng-include>
+    </li>
+</ul>
+</script>
+
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Site Map</h1>
+        <ul class="sitemap">
+            <li ng-repeat="node in pagetree.pages">
+                <a ng-show="node.name == 'home'" ui-sref="home()">{{node.title}}</a>
+                <a ng-hide="node.name == 'home'" ui-sref="pageview({pageName: node.name})">{{node.title}}</a>
+                <ng-include src="'sitemap_root_nodes_renderer.html'">
+                </ng-include>
+            </li>
+        </ul>
+    </div>
+</div>

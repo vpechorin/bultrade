@@ -1,0 +1,246 @@
+$body-bg: #333;
+$main-content-bg: lighten($body-bg, 70%);
+$content-body-bg: #FFF;
+$border-color: darken($main-content-bg, 20%);
+$thinline-color: #933;
+
+$text-color: #333;
+$link-color: #933;
+$link-hover-color: lighten($link-color, 15%);
+$font-stack: 'Roboto Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-sans-serif: $font-stack;
+$breadcrumb-color: darken($link-color, 10%);
+$breadcrumb-bg: $content-body-bg;
+$breadcrumb-active-color: $link-hover-color;
+$breadcrumb-padding-vertical: 4px;
+
+$thumbnail-bg: $content-body-bg;
+$thumbnail-border: $border-color;
+
+$font-size-base: 14px;
+
+@import "bootstrap";
+@import "compass";
+@import "compass/css3/border-radius";
+
+
+/* Space out content a bit */
+body {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: $text-color;
+  font-family: $font-stack;
+  font-weight: 400;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  background: url("/images/noise-grey.jpg") repeat scroll 0 0 $body-bg;
+}
+
+.mainContent {
+  background-image: none;
+  background-color: $main-content-bg;
+  @include border-radius(4px, 4px);
+  min-height: 100%;
+  height: auto !important;
+}
+
+.contentBody {
+  background-color: $content-body-bg;
+  border-left: 1px solid $thinline-color;
+  min-height: 952px;
+}
+
+.pageBody {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.myBc { margin-bottom: 2px !important; }
+.pageText {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.downloadsEl {
+  margin-top: 90px !important;
+}
+
+#statusbar {
+  min-height: 18px;
+  height: 18px;
+}
+
+.form-product { padding-top: 12px;}
+
+.rootNode {
+  font-weight: 700;
+}
+.childNode {
+  font-weight: 400;
+}
+
+.sidebar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-transform:uppercase;
+}
+
+.sidebar-nav li {
+  line-height: 30px;
+  text-indent: 20px;
+  list-style-type: none;
+}
+
+.sidebar-nav li a {
+  color: #212121;
+  display: block;
+  text-decoration: none;
+  border-bottom: 2px solid #FFF;
+  border-top: 0px solid #FFF;
+}
+
+.sidebar-nav li a:hover {
+  color: $link-color;
+  text-decoration: none;
+  border-bottom: 2px solid $link-hover-color;
+  border-top: 0px solid #e4e4e4;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.thumbnail span.caption {
+  display: block;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: $font-stack;
+  font-weight: 400;
+  font-size: 14px;
+
+}
+
+.thumbnail:hover {
+  border: 1px solid $link-hover-color;
+  color: $link-color;
+
+  span.caption {
+    color: $link-color;
+  }
+
+  link:hover {
+    color: $link-color;
+    background-color: #FF9900;
+  }
+}
+
+.kt-badge {
+  border: 1px solid $link-color;
+  @include border-radius(4px, 4px);
+  color: $text-color;
+  display: inline-block;
+  padding: 2px 10px 2px 10px;
+  margin-left: 20px;
+}
+
+treecontrol {
+    /* prevent user selection */
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    /* default */
+    font-family: $font-stack;
+    font-size: $font-size-base;
+    text-decoration: none;
+}
+
+treecontrol ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: none;
+    overflow: hidden;
+}
+
+treecontrol li {
+    position: relative;
+    padding: 0 0 0 20px;
+    line-height: 20px;
+}
+
+treecontrol li.tree-expanded i.tree-leaf-head, treecontrol li.tree-collapsed i.tree-leaf-head {display:none;}
+treecontrol li.tree-expanded i.tree-branch-head, treecontrol li.tree-collapsed i.tree-branch-head {display:inline;}
+treecontrol li.tree-leaf i.tree-branch-head {display:none;}
+treecontrol li.tree-leaf i.tree-leaf-head {display:inline;}
+
+treecontrol li i {
+    cursor: pointer;
+}
+
+treecontrol li .tree-label {
+    cursor: pointer;
+    display: inline;
+}
+
+treecontrol.tree-classic li.tree-expanded i {
+    padding: 1px 10px;
+    background: url("/scripts/bower_components/angular-tree-control/images/folder.png") no-repeat;
+}
+
+treecontrol.tree-classic li.tree-collapsed i {
+    padding: 1px 10px;
+    background: url("/scripts/bower_components/angular-tree-control/images/folder-closed.png") no-repeat;
+}
+
+treecontrol.tree-classic li.tree-leaf i {
+    padding: 1px 10px;
+    background: url("/scripts/bower_components/angular-tree-control/images/file.png") no-repeat;
+}
+
+treecontrol.tree-classic li .tree-selected {
+    background-color: #aaddff;
+    font-weight: bold;
+}
+
+.a1, .a2 {padding-top: 3px; padding-bottom: 3px; }
+
+.logoBox {
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+  font-weight: 700;
+  font-size: 25px;
+  color: $link-color;
+  letter-spacing: normal;
+}
+.companyName {
+  padding-left: 2px;
+  padding-right: 2px;
+  line-height: 28px;
+}
+.slogan {
+  text-align: right;
+  font-weight: 400;
+  font-size: 10px;
+  color: $link-color;
+  text-transform: uppercase;
+  letter-spacing: normal;
+  padding-left: 5px;
+  padding-right: 2px;
+  padding-top: 3px;
+  line-height: 12px;
+}
