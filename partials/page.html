@@ -18,13 +18,12 @@
         </div>
 
         <div class="pageText">
-            <h1 ng-hide="page.hideTitle">{{page.title}}</h1>
-
+            <h1 ng-if="page.hideTitle == false">{{page.title}}</h1>
 
             <div dynamic="page.body"></div>
 
-            <div ng-show="page.docs.length > 0">
-                <h4>Documents attached:</h4>
+            <div ng-if="page.docs.length > 0" class="downloads">
+                <h4>Downloads</h4>
                 <ul class="list-group">
                     <a class="list-group-item" ng-repeat="doc in page.docs" ng-href="{{makeFileUrl(doc)}}" target="_blank">
                         <span ng-if="(doc.title == '') || (doc.title==null)">{{doc.name}}</span>
