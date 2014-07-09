@@ -13,15 +13,16 @@
 
     <script type="text/ng-template" id="nodes_root_renderer.html">
        <li ng-repeat="node in node.nodes" class="rootNode">
-       <a ui-sref="pageview({pageName: node.name})">{{node.title}}</a>
-        <ng-include src="'nodes_renderer.html'"></ng-include>
-
+           <a ng-if="node.placeholder == false" ui-sref="pageview({pageName: node.name})">{{node.title}}</a>
+           <span ng-if="node.placeholder == true">{{node.title}}</span>
+           <ng-include src="'nodes_renderer.html'"></ng-include>
        </li>
     </script>
     <script type="text/ng-template" id="nodes_renderer.html">
         <ul>
             <li ng-repeat="node in node.nodes" class="childNode">
-            <a ui-sref="pageview({pageName: node.name})">{{node.title}}</a>
+            <a ng-if="node.placeholder == false" ui-sref="pageview({pageName: node.name})">{{node.title}}</a>
+            <span ng-if="node.placeholder == true">{{node.title}}</span>
             <ng-include src="'nodes_renderer.html'"></ng-include>
             </li>
         </ul>
@@ -42,8 +43,8 @@
 
                 <ul class="sidebar-nav">
                     <li ng-repeat="node in pagetree.pages">
-                        <a ng-show="node.name == 'home'" ui-sref="home()" class="rootNode">{{node.title}}</a>
-                        <a ng-hide="node.name == 'home'" ui-sref="pageview({pageName: node.name})">{{node.title}}</a>
+                        <a ng-if="node.name == 'home'" ui-sref="home()" class="rootNode">{{node.title}}</a>
+                        <a ng-if="node.name != 'home'" ui-sref="pageview({pageName: node.name})">{{node.title}}</a>
                         <ng-include src="'nodes_root_renderer.html'"></ng-include>
                     </li>
                 </ul>
