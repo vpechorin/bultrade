@@ -12,6 +12,13 @@ angular.module('btapp.controllers', [])
     $rootScope.description = data.description;
   });
 
+  $scope.makeFileUrl = function(f) {
+    return btappConfig.attPath + f.directoryPath + '/' + f.name;
+  };
+  $scope.getImageHeight = function(im, maxHeight) {
+    return (im.height > maxHeight) ? maxHeight : im.height;
+  };
+
 }]).controller('PageViewController', ['$rootScope', '$scope', '$state', '$stateParams', 'Restangular', function ($rootScope, $scope, $state, $stateParams, Restangular) {
   $scope.page = {};
   $scope.subpages = [];
