@@ -14,7 +14,8 @@
       "restangular": "latest",
       "angular-bootstrap": "latest",
       "angular-touch": "latest",
-      "angular-tree-control": "latest"
+      "angular-tree-control": "latest",
+      "html5shiv": "latest"
     },
     "devDependencies": {
     },
