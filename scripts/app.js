@@ -107,7 +107,7 @@ angular.module('btapp', [
           var list = [];
           list[0] = p;
           var c = p;
-          while (typeof c.parent !== undefined) {
+          while (c.parent !== null) {
             list.unshift(c.parent);
             c = c.parent;
           }
