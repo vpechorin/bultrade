@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('btapp.services', [])
-  .provider('requestNotification', function () {
+angular.module('btapp.services', []).provider('requestNotification', function () {
         // This is where we keep subscribed listeners
         var onRequestStartedListeners = [];
         var onRequestEndedListeners = [];

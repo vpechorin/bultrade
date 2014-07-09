@@ -11,8 +11,7 @@ angular.module('btapp', [
     'btapp.directives',
     'btapp.services',
     'btapp.controllers'
-]).
-  config(['$stateProvider',
+]).config(['$stateProvider',
           '$urlRouterProvider',
           '$httpProvider',
           '$locationProvider',
@@ -24,57 +23,42 @@ angular.module('btapp', [
                      $locationProvider,
                      $restangularProvider,
                      requestNotificationProvider) {
-            console.log("Config started");
-
             $locationProvider.html5Mode(false);
 
             $restangularProvider.setBaseUrl('/api/browse');
 
             $urlRouterProvider.otherwise("/");
 
-            console.log("Configure states");
-
-            $stateProvider
-            .state('home', {
+            $stateProvider.state('home', {
               url: '/',
               templateUrl: 'partials/home.html',
               controller: 'HomeController'
-            })
-            .state('sitemap', {
+            }).state('sitemap', {
               url: '/sitemap',
               templateUrl: 'partials/sitemap.html'
-            })
-            .state('downloads', {
+            }).state('downloads', {
               url: '/downloads',
               templateUrl: 'partials/downloads.html',
               controller: 'DownloadsController'
-            })
-            .state('pageview', {
+            }).state('pageview', {
               url: '/pv/:pageName',
               templateUrl: 'partials/page.html',
               controller: 'PageViewController'
             });
 
-            console.log("Configure http req interceptors");
-
             $httpProvider.defaults.transformRequest.push(function (data) {
               requestNotificationProvider.fireRequestStarted(data);
-              console.log("Request started");
               return data;
             });
 
             $httpProvider.defaults.transformResponse.push(function (data) {
               requestNotificationProvider.fireRequestEnded(data);
-              console.log("Request ended");
               return data;
             });
 
-            console.log("Config ended");
-          }])
-.run([ '$rootScope', '$state', '$stateParams', 'Restangular',
+          }]).run([ '$rootScope', '$state', '$stateParams', 'Restangular',
       function ($rootScope, $state, $stateParams, Restangular) {
 
-        console.log("Initialize rootScope");
         $rootScope.site = {};
         $rootScope.pagetree = {};
         $rootScope.pagetree.pages = [];
@@ -90,7 +74,7 @@ angular.module('btapp', [
         });
 
         var treeProcess = function(tree) {
-          if (tree != null) {
+          if (typeof tree !== undefined) {
             var i = 0;
             for (i = 0; i < tree.length; i++) {
               var rootNode = tree[i];
@@ -102,7 +86,7 @@ angular.module('btapp', [
 
         var branchProcess = function(node) {
           $rootScope.pagetree.pagemap[node.name] = node;
-          if (node.nodes != null) {
+          if (typeof node.nodes !== undefined) {
             var children = node.nodes;
             var i = 0;
             for (i = 0; i < children.length; i++) {
@@ -115,7 +99,6 @@ angular.module('btapp', [
 
         $rootScope.pagetree.findPage = function(pageName) {
           var p = $rootScope.pagetree.pagemap[pageName];
-          if (p == null) console.log("Page not found: " + pageName);
           return p;
         };
 
@@ -124,7 +107,7 @@ angular.module('btapp', [
           var list = [];
           list[0] = p;
           var c = p;
-          while (c.parent != null) {
+          while (typeof c.parent !== undefined) {
             list.unshift(c.parent);
             c = c.parent;
           }

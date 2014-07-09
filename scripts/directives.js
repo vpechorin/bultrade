@@ -7,8 +7,7 @@ directive('appVersion', ['version', function (version) {
   return function (scope, elm, attrs) {
     elm.text(version);
   };
-}])
-.directive('dynamic', function ($compile) {
+}]).directive('dynamic', function ($compile) {
   return {
     restrict: 'A',
     replace: true,
@@ -19,8 +18,7 @@ directive('appVersion', ['version', function (version) {
       });
     }
   };
-})
-.directive('ngConfirmClick', [
+}).directive('ngConfirmClick', [
   function(){
     return {
       priority: -1,
@@ -34,10 +32,9 @@ directive('appVersion', ['version', function (version) {
           }
         });
       }
-    }
+    };
   }
-])
-.directive('loadingWidget', function (requestNotification) {
+]).directive('loadingWidget', function (requestNotification) {
   return {
     restrict: "AC",
     link: function (scope, element) {
@@ -56,8 +53,7 @@ directive('appVersion', ['version', function (version) {
       });
     }
   };
-})
-.directive('ktSubpages', ['Restangular','$stateParams', function(Restangular, $stateParams) {
+}).directive('ktSubpages', ['Restangular','$stateParams', function(Restangular, $stateParams) {
   var checking = null;
   return {
     restrict: "AE",
@@ -68,14 +64,12 @@ directive('appVersion', ['version', function (version) {
         scope.subpages = list;
       });
     }
-  }
-}])
-.directive('nxEqualEx', function () {
+  };
+}]).directive('nxEqualEx', function () {
   return {
     require: 'ngModel',
     link: function (scope, elem, attrs, model) {
       if (!attrs.nxEqualEx) {
-        console.error('nxEqualEx expects a model as an argument!');
         return;
       }
       scope.$watch(attrs.nxEqualEx, function (value) {

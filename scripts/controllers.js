@@ -2,8 +2,9 @@
 
 /* Controllers */
 
-angular.module('btapp.controllers', [])
-.controller('HomeController', ['$rootScope', '$scope', '$state', '$stateParams', 'Restangular', function ($rootScope, $scope, $state, $stateParams, Restangular) {
+angular.module('btapp.controllers', []).controller('HomeController',
+                                                   ['$rootScope', '$scope', '$state', '$stateParams', 'Restangular',
+                                                    function ($rootScope, $scope, $state, $stateParams, Restangular) {
   $scope.page = {};
 
   Restangular.one('sites', btappConfig.site).one('pages', 'home').get().then(function (data) {
@@ -55,8 +56,7 @@ angular.module('btapp.controllers', [])
   var treeProcess = function() {
     var nodes = $scope.treedata;
 
-    if (nodes == null || nodes.length == 0) {
-      console.log("No nodes found");
+    if (typeof nodes === undefined || nodes.length === 0) {
       return;
     }
     var filtered = [];
@@ -80,7 +80,6 @@ angular.module('btapp.controllers', [])
   };
 
   var branchProcess = function(node) {
-    console.log("Processing node: " + node.id + "/" + node.name + " ** " + node.nodes);
     var nodes = node.nodes;
     var filesFound = 0;
 
@@ -96,7 +95,6 @@ angular.module('btapp.controllers', [])
         f.isFile = true;
         filtered.push(f);
         filesFound++;
-        console.log("File found: " + f.name);
       }
     }
 
@@ -110,7 +108,6 @@ angular.module('btapp.controllers', [])
     }
     node.nodes = filtered;
     node.filesNum = filesFound;
-    console.log("Node: " + node.name + " files: " + filesFound);
     return filesFound;
   };
 
@@ -131,7 +128,7 @@ angular.module('btapp.controllers', [])
         label: "a6",
         labelSelected: "a8"
     }
-  }
+  };
 
 
 }]);
