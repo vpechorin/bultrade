@@ -7892,7 +7892,7 @@ button.close {
   }
 }
 /* Space out content a bit */
-/* line 28, ../styles/main.scss */
+/* line 29, ../styles/main.scss */
 body {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -7910,7 +7910,7 @@ body {
   background: url("/images/noise-grey.jpg") repeat scroll 0 0 #333333;
 }
 
-/* line 45, ../styles/main.scss */
+/* line 46, ../styles/main.scss */
 .mainContent {
   background-image: none;
   background-color: #e6e6e6;
@@ -7921,62 +7921,62 @@ body {
   height: auto !important;
 }
 
-/* line 53, ../styles/main.scss */
+/* line 54, ../styles/main.scss */
 .contentBody {
   background-color: white;
   border-left: 1px solid #993333;
   min-height: 952px;
 }
 
-/* line 59, ../styles/main.scss */
+/* line 60, ../styles/main.scss */
 .pageBody {
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
 
-/* line 64, ../styles/main.scss */
+/* line 65, ../styles/main.scss */
 .myBc {
   margin-bottom: 2px !important;
 }
 
-/* line 65, ../styles/main.scss */
+/* line 66, ../styles/main.scss */
 .pageText {
   padding-left: 15px;
   padding-right: 15px;
 }
 
-/* line 70, ../styles/main.scss */
+/* line 71, ../styles/main.scss */
 .nav, .pagination, .carousel, .panel-title a {
   cursor: pointer;
 }
 
-/* line 72, ../styles/main.scss */
+/* line 73, ../styles/main.scss */
 .downloadsEl {
   margin-top: 90px !important;
 }
 
-/* line 76, ../styles/main.scss */
+/* line 77, ../styles/main.scss */
 #statusbar {
   min-height: 18px;
   height: 18px;
 }
 
-/* line 81, ../styles/main.scss */
+/* line 82, ../styles/main.scss */
 .form-product {
   padding-top: 12px;
 }
 
-/* line 83, ../styles/main.scss */
+/* line 84, ../styles/main.scss */
 .rootNode {
   font-weight: 700;
 }
 
-/* line 86, ../styles/main.scss */
+/* line 87, ../styles/main.scss */
 .childNode {
   font-weight: 400;
 }
 
-/* line 90, ../styles/main.scss */
+/* line 91, ../styles/main.scss */
 .sidebar-nav {
   list-style: none;
   margin: 0;
@@ -7984,14 +7984,50 @@ body {
   text-transform: uppercase;
 }
 
-/* line 97, ../styles/main.scss */
+/* line 98, ../styles/main.scss */
 .sidebar-nav li {
   line-height: 30px;
   text-indent: 20px;
   list-style-type: none;
 }
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  /* line 98, ../styles/main.scss */
+  .sidebar-nav li {
+    text-indent: 5px;
+    line-height: 18px;
+    font-size: 12px;
+  }
+}
 
-/* line 103, ../styles/main.scss */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  /* line 110, ../styles/main.scss */
+  .sidebar-nav li ul {
+    padding-left: 5px;
+  }
+
+  /* line 113, ../styles/main.scss */
+  .sidebar-nav li ul li {
+    font-size: 10px;
+    text-transform: none;
+    text-align: right;
+  }
+
+  /* line 118, ../styles/main.scss */
+  .breadcrumb {
+    display: none;
+  }
+
+  /* line 121, ../styles/main.scss */
+  .mainmenu {
+    padding: 2px 5px;
+  }
+  /* line 123, ../styles/main.scss */
+  .mainmenu .row {
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+}
+/* line 131, ../styles/main.scss */
 .sidebar-nav li a {
   color: #212121;
   display: block;
@@ -8000,7 +8036,7 @@ body {
   border-top: 0px solid #FFF;
 }
 
-/* line 111, ../styles/main.scss */
+/* line 139, ../styles/main.scss */
 .sidebar-nav li a:hover {
   color: #993333;
   text-decoration: none;
@@ -8008,13 +8044,13 @@ body {
   border-top: 0px solid #e4e4e4;
 }
 
-/* line 119, ../styles/main.scss */
+/* line 147, ../styles/main.scss */
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
   text-decoration: none;
 }
 
-/* line 123, ../styles/main.scss */
+/* line 151, ../styles/main.scss */
 .thumbnail span.caption {
   display: block;
   text-transform: uppercase;
@@ -8024,22 +8060,22 @@ body {
   font-size: 14px;
 }
 
-/* line 133, ../styles/main.scss */
+/* line 161, ../styles/main.scss */
 .thumbnail:hover {
   border: 1px solid #c65353;
   color: #993333;
 }
-/* line 137, ../styles/main.scss */
+/* line 165, ../styles/main.scss */
 .thumbnail:hover span.caption {
   color: #993333;
 }
-/* line 141, ../styles/main.scss */
+/* line 169, ../styles/main.scss */
 .thumbnail:hover link:hover {
   color: #993333;
   background-color: #FF9900;
 }
 
-/* line 147, ../styles/main.scss */
+/* line 175, ../styles/main.scss */
 .kt-badge {
   border: 1px solid #993333;
   -webkit-border-radius: 4px 4px;
@@ -8051,7 +8087,7 @@ body {
   margin-left: 20px;
 }
 
-/* line 156, ../styles/main.scss */
+/* line 184, ../styles/main.scss */
 treecontrol {
   /* prevent user selection */
   -moz-user-select: -moz-none;
@@ -8065,7 +8101,7 @@ treecontrol {
   text-decoration: none;
 }
 
-/* line 170, ../styles/main.scss */
+/* line 198, ../styles/main.scss */
 treecontrol ul {
   margin: 0;
   padding: 0;
@@ -8074,75 +8110,75 @@ treecontrol ul {
   overflow: hidden;
 }
 
-/* line 178, ../styles/main.scss */
+/* line 206, ../styles/main.scss */
 treecontrol li {
   position: relative;
   padding: 0 0 0 20px;
   line-height: 20px;
 }
 
-/* line 184, ../styles/main.scss */
+/* line 212, ../styles/main.scss */
 treecontrol li.tree-expanded i.tree-leaf-head, treecontrol li.tree-collapsed i.tree-leaf-head {
   display: none;
 }
 
-/* line 185, ../styles/main.scss */
+/* line 213, ../styles/main.scss */
 treecontrol li.tree-expanded i.tree-branch-head, treecontrol li.tree-collapsed i.tree-branch-head {
   display: inline;
 }
 
-/* line 186, ../styles/main.scss */
+/* line 214, ../styles/main.scss */
 treecontrol li.tree-leaf i.tree-branch-head {
   display: none;
 }
 
-/* line 187, ../styles/main.scss */
+/* line 215, ../styles/main.scss */
 treecontrol li.tree-leaf i.tree-leaf-head {
   display: inline;
 }
 
-/* line 189, ../styles/main.scss */
+/* line 217, ../styles/main.scss */
 treecontrol li i {
   cursor: pointer;
 }
 
-/* line 193, ../styles/main.scss */
+/* line 221, ../styles/main.scss */
 treecontrol li .tree-label {
   cursor: pointer;
   display: inline;
 }
 
-/* line 198, ../styles/main.scss */
+/* line 226, ../styles/main.scss */
 treecontrol.tree-classic li.tree-expanded i {
   padding: 1px 10px;
   background: url("/scripts/bower_components/angular-tree-control/images/folder.png") no-repeat;
 }
 
-/* line 203, ../styles/main.scss */
+/* line 231, ../styles/main.scss */
 treecontrol.tree-classic li.tree-collapsed i {
   padding: 1px 10px;
   background: url("/scripts/bower_components/angular-tree-control/images/folder-closed.png") no-repeat;
 }
 
-/* line 208, ../styles/main.scss */
+/* line 236, ../styles/main.scss */
 treecontrol.tree-classic li.tree-leaf i {
   padding: 1px 10px;
   background: url("/scripts/bower_components/angular-tree-control/images/file.png") no-repeat;
 }
 
-/* line 213, ../styles/main.scss */
+/* line 241, ../styles/main.scss */
 treecontrol.tree-classic li .tree-selected {
   background-color: #aaddff;
   font-weight: bold;
 }
 
-/* line 218, ../styles/main.scss */
+/* line 246, ../styles/main.scss */
 .a1, .a2 {
   padding-top: 3px;
   padding-bottom: 3px;
 }
 
-/* line 220, ../styles/main.scss */
+/* line 248, ../styles/main.scss */
 .logoBox {
   padding-top: 10px;
   padding-left: 20px;
@@ -8153,15 +8189,29 @@ treecontrol.tree-classic li .tree-selected {
   color: #993333;
   letter-spacing: normal;
 }
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  /* line 248, ../styles/main.scss */
+  .logoBox {
+    font-size: 15px;
+    padding: 3px 2px 3px 2px;
+    font-weight: 400;
+  }
+}
 
-/* line 230, ../styles/main.scss */
+/* line 266, ../styles/main.scss */
 .companyName {
   padding-left: 2px;
   padding-right: 2px;
   line-height: 28px;
 }
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  /* line 266, ../styles/main.scss */
+  .companyName {
+    line-height: 14px;
+  }
+}
 
-/* line 235, ../styles/main.scss */
+/* line 275, ../styles/main.scss */
 .slogan {
   text-align: right;
   font-weight: 400;
@@ -8174,8 +8224,16 @@ treecontrol.tree-classic li .tree-selected {
   padding-top: 3px;
   line-height: 12px;
 }
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  /* line 275, ../styles/main.scss */
+  .slogan {
+    font-size: 9px;
+    padding: 2px 2px 2px 2px;
+    font-weight: 300;
+  }
+}
 
-/* line 247, ../styles/main.scss */
+/* line 293, ../styles/main.scss */
 .downloads {
   padding-top: 30px;
 }
