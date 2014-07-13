@@ -34,10 +34,10 @@ angular.module('btapp', [
               templateUrl: '/partials/home.html',
               controller: 'HomeController'
             }).state('sitemap', {
-              url: '/sitemap',
+              url: '/pvs/sitemap',
               templateUrl: '/partials/sitemap.html'
             }).state('downloads', {
-              url: '/downloads',
+              url: '/pvs/downloads',
               templateUrl: '/partials/downloads.html',
               controller: 'DownloadsController'
             }).state('pageview', {
