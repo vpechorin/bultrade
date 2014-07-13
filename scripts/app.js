@@ -23,7 +23,7 @@ angular.module('btapp', [
                      $locationProvider,
                      $restangularProvider,
                      requestNotificationProvider) {
-            $locationProvider.html5Mode(true).hashPrefix("!");
+            $locationProvider.html5Mode(false).hashPrefix("!");
 
             $restangularProvider.setBaseUrl('/api/browse');
 
