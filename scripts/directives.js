@@ -58,7 +58,7 @@ directive('appVersion', ['version', function (version) {
   return {
     restrict: "AE",
     replace: true,
-    templateUrl: 'partials/subpages.html',
+    templateUrl: '/partials/subpages.html',
     link: function(scope, element, attrs) {
        Restangular.one('sites', btappConfig.site).one('pages', $stateParams.pageName).getList("children").then(function (list) {
         scope.subpages = list;

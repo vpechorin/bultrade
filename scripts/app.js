@@ -23,7 +23,7 @@ angular.module('btapp', [
                      $locationProvider,
                      $restangularProvider,
                      requestNotificationProvider) {
-            $locationProvider.html5Mode(false);
+            $locationProvider.html5Mode(true).hashPrefix("!");
 
             $restangularProvider.setBaseUrl('/api/browse');
 
@@ -31,18 +31,18 @@ angular.module('btapp', [
 
             $stateProvider.state('home', {
               url: '/',
-              templateUrl: 'partials/home.html',
+              templateUrl: '/partials/home.html',
               controller: 'HomeController'
             }).state('sitemap', {
               url: '/sitemap',
-              templateUrl: 'partials/sitemap.html'
+              templateUrl: '/partials/sitemap.html'
             }).state('downloads', {
               url: '/downloads',
-              templateUrl: 'partials/downloads.html',
+              templateUrl: '/partials/downloads.html',
               controller: 'DownloadsController'
             }).state('pageview', {
               url: '/pv/:pageName',
-              templateUrl: 'partials/page.html',
+              templateUrl: '/partials/page.html',
               controller: 'PageViewController'
             });
 
