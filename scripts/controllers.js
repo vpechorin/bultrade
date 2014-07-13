@@ -14,7 +14,7 @@ angular.module('btapp.controllers', []).controller('HomeController',
   });
 
   $scope.makeFileUrl = function(f) {
-    return btappConfig.attPath + f.directoryPath + '/' + f.name;
+    return btappConfig.attPath + "/" + $scope.page.siteId + f.directoryPath + '/' + f.name;
   };
   $scope.getImageHeight = function(im, maxHeight) {
     return (im.height > maxHeight) ? maxHeight : im.height;
@@ -32,7 +32,7 @@ angular.module('btapp.controllers', []).controller('HomeController',
   });
 
   $scope.makeFileUrl = function(f) {
-    return btappConfig.attPath + f.directoryPath + '/' + f.name;
+    return btappConfig.attPath + "/" + $scope.page.siteId + f.directoryPath + '/' + f.name;
   };
 
   $scope.getImageHeight = function(im, maxHeight) {
@@ -112,7 +112,7 @@ angular.module('btapp.controllers', []).controller('HomeController',
   };
 
   $scope.makeFileUrl = function(f) {
-    return btappConfig.attPath + f.directoryPath + '/' + f.name;
+    return btappConfig.attPath + "/" + $rootScope.site.id + f.directoryPath + '/' + f.name;
   };
 
   $scope.treeOptions = {
