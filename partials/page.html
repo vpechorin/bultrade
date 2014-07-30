@@ -3,7 +3,8 @@
         <div ng-show="parents.length > 1">
             <ol class="breadcrumb myBc">
               <li ng-repeat="bcItem in parents">
-                  <a ng-if="($last == false) && (bcItem.placeholder == false)" ui-sref="pageview({pageName: bcItem.name})">{{bcItem.title}}</a>
+                  <a ng-if="(bcItem.name == 'home')" href="/">{{bcItem.title}}</a>
+                  <a ng-if="($last == false) && (bcItem.placeholder == false) && (bcItem.name != 'home')" ui-sref="pageview({pageName: bcItem.name})">{{bcItem.title}}</a>
                   <span ng-if="($last || bcItem.placeholder)" class="active">{{bcItem.title}}</span>
                 </li>
             </ol>
