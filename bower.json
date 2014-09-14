@@ -15,7 +15,8 @@
       "angular-bootstrap": "latest",
       "angular-touch": "latest",
       "angular-tree-control": "latest",
-      "html5shiv": "latest"
+      "html5shiv": "latest",
+      "textAngular": "latest"
     },
     "devDependencies": {
     },

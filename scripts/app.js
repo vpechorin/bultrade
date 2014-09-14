@@ -7,6 +7,7 @@ angular.module('btapp', [
     'ui.bootstrap',
     'restangular',
     'treeControl',
+    'textAngular',
     'btapp.filters',
     'btapp.directives',
     'btapp.services',

@@ -9,7 +9,12 @@ angular.module('btapp.controllers', []).controller('HomeController',
 
   Restangular.one('sites', btappConfig.site).one('pages', 'home').get().then(function (data) {
     $scope.page = data;
-    $rootScope.title = data.title;
+    if (data.htmlTitle && data.htmlTitle.length) {
+      $rootScope.title = data.htmlTitle;
+    }
+    else {
+      $rootScope.title = data.title;
+    }
     $rootScope.description = data.description;
   });
 
@@ -26,7 +31,13 @@ angular.module('btapp.controllers', []).controller('HomeController',
 
   Restangular.one('sites', btappConfig.site).one('pages', $stateParams.pageName).get().then(function (data) {
     $scope.page = data;
-    $rootScope.title = data.title;
+    if (data.htmlTitle && data.htmlTitle.length) {
+      $rootScope.title = data.htmlTitle;
+    }
+    else {
+      $rootScope.title = data.title;
+    }
+
     $rootScope.description = data.description;
     $scope.parents = $rootScope.pagetree.getParents($scope.page.name);
   });
