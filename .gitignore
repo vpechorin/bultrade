@@ -1,4 +1,5 @@
 /.idea
 /.sass-cache
 /.settings
+/node_modules
 /scripts/bower_components

@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-xs-12 pageBody">
+        <ol class="breadcrumb myBc">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <span class="active">{{dataform.title}}</span>
+            </li>
+        </ol>
+
+        <div class="pageText">
+            <h1>{{dataform.title}}</h1>
+
+            <formly-form result="formData" fields="formFields" options="formOptions" ng-submit="onSubmit()">
+                <button type="submit">Hello World</button>
+            </formly-form>
+
+        </div>
+
+    </div>
+</div>

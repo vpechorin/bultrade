@@ -26,7 +26,7 @@
         </script>
     <![endif]-->
     <!--[if lt IE 9]>
-        <script src="/scripts/bower_components/html5shiv/dist/html5shiv.min.js"></script>
+        <script src="./scripts/bower_components/html5shiv/dist/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
@@ -71,6 +71,7 @@
                 </ul>
                 <ul class="sidebar-nav downloadsEl">
                     <li class="rootNode downloadsMenuItem"><a ui-sref="downloads">Downloads</a></li>
+                    <li class="rootNode downloadsMenuItem"><a ui-sref="customforms({formName: 'contactus'})">Contact</a></li>
                 </ul>
             </nav>
 
@@ -80,42 +81,23 @@
         </div>
     </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" id="statusbar">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-3">
-                <div class="loading-widget"><img src="/images/ajax-loader2.gif"></div>
-            </div>
-            <div class="col-xs-3">
-                &copy; - Bultrade 2014 Ltd.
-            </div>
-            <div class="col-xs-6">
-                <div class="lbp-notice pull-right">
-                Our Licensed Building Practitioners registration number: <a rel="nofollow" target="_blank" href="http://lbp.dbh.govt.nz/PublicRegister/View.aspx?i=108586&search=1&p=1&lbpid=BP108586">BP108586</a>
+    <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" id="statusbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-3">
+                    &copy; - Bultrade 2014 Ltd.
+                </div>
+                <div class="col-xs-9">
+                    <div class="lbp-notice pull-right">
+                        Our Licensed Building Practitioners registration number:
+                        <a rel="nofollow" target="_blank" href="http://lbp.dbh.govt.nz/PublicRegister/View.aspx?i=108586&search=1&p=1&lbpid=BP108586">BP108586</a>
+                    </div>
                 </div>
             </div>
-        <div>
-    </div>
-</nav>
+        </div>
+    </nav>
 
-        <script src="/scripts/bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="/scripts/bower_components/angular/angular.min.js"></script>
-        <script src="/scripts/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-        <script src="/scripts/bower_components/lodash/dist/lodash.min.js"></script>
-        <script src="/scripts/bower_components/restangular/dist/restangular.min.js"></script>
-        <script src="/scripts/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-        <script src="/scripts/bower_components/angular-touch/angular-touch.min.js"></script>
-        <script src="/scripts/bower_components/angular-tree-control/angular-tree-control.js"></script>
-        <script src="/scripts/bower_components/textAngular/dist/textAngular-sanitize.min.js"></script>
-        <script src="/scripts/bower_components/textAngular/dist/textAngular.min.js"></script>
-
-        <script src="/scripts/config.js"></script>
-        <script src="/scripts/app.js"></script>
-        <script src="/scripts/controllers.js"></script>
-        <script src="/scripts/filters.js"></script>
-        <script src="/scripts/directives.js"></script>
-        <script src="/scripts/services.js"></script>
-
+<script src="dist/app.js" type="text/javascript"></script>
 
 </body>
 </html>

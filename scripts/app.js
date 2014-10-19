@@ -1,127 +1,130 @@
 'use strict';
 
-// Declare app level module which depends on filters, and services
-angular.module('btapp', [
-    'ui.router',
-    'ngTouch',
-    'ui.bootstrap',
-    'restangular',
-    'treeControl',
-    'textAngular',
-    'btapp.filters',
-    'btapp.directives',
-    'btapp.services',
-    'btapp.controllers'
-]).config(['$stateProvider',
-          '$urlRouterProvider',
-          '$httpProvider',
-          '$locationProvider',
-          'RestangularProvider',
-          'requestNotificationProvider',
-          function ( $stateProvider,
-                     $urlRouterProvider,
-                     $httpProvider,
-                     $locationProvider,
-                     $restangularProvider,
-                     requestNotificationProvider) {
-            $locationProvider.html5Mode(true).hashPrefix("!");
+//require('es5-shim');
+//require('es5-sham');
 
-            $restangularProvider.setBaseUrl('/api/browse');
+require('jquery');
+var angular = require('angular');
+require('angular-ui-router');
+require('lodash');
+require('restangular');
+require('angular-bootstrap');
+require('angular-tree-control');
+require('angular-touch');
+require('textAngularSanitize');
+require('textAngular');
+require('angular-formly');
+require('angular-loading-bar');
 
-            $urlRouterProvider.otherwise("/");
+var app = angular.module('btapp', ['ng', 'ui.router', 'ngTouch', 'ui.bootstrap', 'restangular', 'treeControl', 'textAngular', 'formly', 'angular-loading-bar' ]);
 
-            $stateProvider.state('home', {
-              url: '/',
-              templateUrl: '/partials/home.html',
-              controller: 'HomeController'
-            }).state('sitemap', {
-              url: '/pvs/sitemap',
-              templateUrl: '/partials/sitemap.html'
-            }).state('downloads', {
-              url: '/pvs/downloads',
-              templateUrl: '/partials/downloads.html',
-              controller: 'DownloadsController'
-            }).state('pageview', {
-              url: '/pv/:pageName',
-              templateUrl: '/partials/page.html',
-              controller: 'PageViewController'
-            });
+var btappConfig = require('./config');
+require('./filters');
+require('./controllers');
+require('./directives');
 
-            $httpProvider.defaults.transformRequest.push(function (data) {
-              requestNotificationProvider.fireRequestStarted(data);
-              return data;
-            });
+app.config( function ( $stateProvider,
+                        $urlRouterProvider,
+                        $locationProvider,
+                        RestangularProvider) {
 
-            $httpProvider.defaults.transformResponse.push(function (data) {
-              requestNotificationProvider.fireRequestEnded(data);
-              return data;
-            });
+  $locationProvider.html5Mode(btappConfig.html5Mode).hashPrefix('!');
 
-          }]).run([ '$rootScope', '$state', '$stateParams', 'Restangular',
-      function ($rootScope, $state, $stateParams, Restangular) {
+  RestangularProvider.setBaseUrl('/api/browse');
 
-        $rootScope.site = {};
-        $rootScope.pagetree = {};
-        $rootScope.pagetree.pages = [];
-        $rootScope.pagetree.pagemap = {};
+  $urlRouterProvider.otherwise('/');
 
-        Restangular.one('sites', btappConfig.site).get().then(function (data) {
-          $rootScope.site = data.plain();
-        });
+  $stateProvider
+  .state('home', {
+    url: '/',
+    templateUrl: '/partials/home.html',
+    controller: 'HomeController'
+  })
+  .state('sitemap', {
+    url: '/pvs/sitemap',
+    templateUrl: '/partials/sitemap.html'
+  })
+  .state('downloads', {
+    url: '/pvs/downloads',
+    templateUrl: '/partials/downloads.html',
+    controller: 'DownloadsController'
+  })
+  .state('customforms', {
+    url: '/pvs/forms/:formName',
+    templateUrl: '/partials/customform.html',
+    controller: 'FormController'
+  })
+  .state('pageview', {
+    url: '/pv/:pageName',
+    templateUrl: '/partials/page.html',
+    controller: 'PageViewController'
+  });
 
-        Restangular.one('sites', btappConfig.site).all('tree').getList().then(function (data) {
-          $rootScope.pagetree.pages = data.plain();
-          treeProcess($rootScope.pagetree.pages);
-        });
+});
 
-        var treeProcess = function(tree) {
-          if (typeof tree !== undefined) {
-            var i = 0;
-            for (i = 0; i < tree.length; i++) {
-              var rootNode = tree[i];
-              rootNode.parent = null;
-              branchProcess(rootNode);
-            }
-          }
-        };
+app.run( function ($rootScope, $state, $stateParams, Restangular) {
 
-        var branchProcess = function(node) {
-          $rootScope.pagetree.pagemap[node.name] = node;
-          if (typeof node.nodes !== undefined) {
-            var children = node.nodes;
-            var i = 0;
-            for (i = 0; i < children.length; i++) {
-              var child = children[i];
-              child.parent=node;
-              branchProcess(child);
-            }
-          }
-        };
+  $rootScope.site = {};
+  $rootScope.pagetree = {};
+  $rootScope.pagetree.pages = [];
+  $rootScope.pagetree.pagemap = {};
 
-        $rootScope.pagetree.findPage = function(pageName) {
-          var p = $rootScope.pagetree.pagemap[pageName];
-          return p;
-        };
+  var branchProcess = function(node) {
+    $rootScope.pagetree.pagemap[node.name] = node;
+    if (typeof node.nodes !== undefined) {
+      var children = node.nodes;
+      var i = 0;
+      for (i = 0; i < children.length; i++) {
+        var child = children[i];
+        child.parent = node;
+        branchProcess(child);
+      }
+    }
+  };
 
-        $rootScope.pagetree.getParents = function(pageName) {
-          var p = $rootScope.pagetree.pagemap[pageName];
-          var list = [];
-          list[0] = p;
-          var c = p;
-          while (c.parent !== null) {
-            list.unshift(c.parent);
-            c = c.parent;
-          }
-          return list;
-        };
+  var treeProcess = function(tree) {
+    if (typeof tree !== undefined) {
+      var i = 0;
+      for (i = 0; i < tree.length; i++) {
+        var rootNode = tree[i];
+        rootNode.parent = null;
+        branchProcess(rootNode);
+      }
+    }
+  };
 
-        /* Reset error when a new view is loaded */
-        $rootScope.$on('$viewContentLoaded', function () {
-          delete $rootScope.error;
-        });
+  $rootScope.pagetree.findPage = function(pageName) {
+    var p = $rootScope.pagetree.pagemap[pageName];
+    return p;
+  };
 
-        $rootScope.$state = $state;
-        $rootScope.$stateParams = $stateParams;
-        $rootScope.initialized = true;
-      }]);
+  $rootScope.pagetree.getParents = function(pageName) {
+    var p = $rootScope.pagetree.pagemap[pageName];
+    var list = [];
+    list[0] = p;
+    var c = p;
+    while (c.parent !== null) {
+      list.unshift(c.parent);
+      c = c.parent;
+    }
+    return list;
+  };
 
+  Restangular.one('sites', btappConfig.site).get().then(function (data) {
+    $rootScope.site = data.plain();
+  });
+
+  Restangular.one('sites', btappConfig.site).all('tree').getList().then(function (data) {
+    $rootScope.pagetree.pages = data.plain();
+    treeProcess($rootScope.pagetree.pages);
+  });
+
+  /* Reset error when a new view is loaded */
+  $rootScope.$on('$viewContentLoaded', function () {
+    delete $rootScope.error;
+  });
+
+  $rootScope.$state = $state;
+  $rootScope.$stateParams = $stateParams;
+  $rootScope.initialized = true;
+});
