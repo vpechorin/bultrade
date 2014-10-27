@@ -23,6 +23,13 @@
 
             <div ta-bind ng-model="page.body"></div>
 
+            <div ng-if="(page.includeForm && page.formId)">
+                <h3>{{dataform.title}}</h3>
+
+                <formly-form name="dataform.name" result="formData" fields="formFields" options="formOptions" ng-submit="onFormSubmit()">
+                </formly-form>
+            </div>
+
             <div ng-if="page.docs.length > 0" class="downloads">
                 <h4>Downloads</h4>
                 <ul class="list-group">

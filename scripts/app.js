@@ -50,12 +50,17 @@ app.config( function ( $stateProvider,
     controller: 'DownloadsController'
   })
   .state('customforms', {
-    url: '/pvs/forms/:formName',
+    url: '/pvs/forms/{formName}',
     templateUrl: '/partials/customform.html',
     controller: 'FormController'
   })
+  .state('customformsuccess', {
+    url: '/pvs/formresult/success',
+    templateUrl: '/partials/customformsuccess.html',
+    controller: 'FormSuccessController'
+  })
   .state('pageview', {
-    url: '/pv/:pageName',
+    url: '/pv/{pageName}',
     templateUrl: '/partials/page.html',
     controller: 'PageViewController'
   });
