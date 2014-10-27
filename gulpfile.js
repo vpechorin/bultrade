@@ -85,24 +85,7 @@ gulp.task('browserify', /*['lint', 'unit'],*/ function() {
   return bundle();
 });
 
-gulp.task('ngmin', ['lint'], function() {
-  return gulp.src([
-    'scripts/**/*.js',
-    '!scripts/bower_components/**',
-  ])
-  .pipe(ngmin())
-  .pipe(gulp.dest('./ngmin'));
-});
-
-gulp.task('browserify-min', ['ngmin'], function() {
-  return browserify('./ngmin/app.js')
-  .bundle()
-  .pipe(source('app.min.js'))
-  .pipe(streamify(uglify({ mangle: false })))
-  .pipe(gulp.dest('./dist/'));
-});
-
-gulp.task('browserify-min2', ['ngannotate'], function() {
+gulp.task('browserify-min', ['ngannotate'], function() {
   return browserify('./ngannotate/app.js')
   .bundle()
   .pipe(source('app.min.js'))
