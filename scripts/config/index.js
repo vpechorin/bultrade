@@ -3,6 +3,6 @@
 var btappConfig = {
   site: 'default',
   attPath: '/att',
-  html5Mode: false
+  html5Mode: true
 };
 module.exports = btappConfig;
